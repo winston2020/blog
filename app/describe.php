@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class abstract extends Model
+class describe extends Model
 {
     //
+    protected $table = 'describe';
 }

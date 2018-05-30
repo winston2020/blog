@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTypeTable extends Migration
+class CreateDescribeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('type', function (Blueprint $table) {
+        Schema::create('describe', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('typename')->comment('类型');
-            $table->string('ename')->comment('泛域名前缀');
+            $table->integer('title_id')->unsigned();
+            $table->foreign('title_id')->references('id')->on('title');
+            $table->text('content');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type');
+        Schema::dropIfExists('describe');
     }
 }

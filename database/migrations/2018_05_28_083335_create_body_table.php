@@ -15,7 +15,7 @@ class CreateBodyTable extends Migration
     {
         Schema::create('body', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title_id')->unsigned();
+            $table->integer('title_id')->unsigned();
             $table->foreign('title_id')->references('id')->on('title');
             $table->text('body')->comment('文章内容');
             $table->timestamps();

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAbstractTable extends Migration
+class CreateImgUrlTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateAbstractTable extends Migration
      */
     public function up()
     {
-        Schema::create('abstract', function (Blueprint $table) {
+        Schema::create('img_url', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title_id')->unsigned();
-            $table->foreign('title_id')->reference('id')->on('title');
-            $table->text('content');
+            $table->string('img_url')->comment('图片路径');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateAbstractTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('abstract');
+        Schema::dropIfExists('img_url');
     }
 }
